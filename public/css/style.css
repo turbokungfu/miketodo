@@ -1,6 +1,8 @@
 h1{
     color: red;
 }
+
+/* style for completed data */
 .completed{
     color: gray;
     text-decoration: line-through;

@@ -1,22 +1,25 @@
-const deleteBtn = document.querySelectorAll('.fa-trash')
-const item = document.querySelectorAll('.item span')
-const itemCompleted = document.querySelectorAll('.item span.completed')
+//takes all the items from ejs and provides variable names.
+const deleteBtn = document.querySelectorAll('.fa-trash') //variable to remove button
+const item = document.querySelectorAll('.item span')//variable for items
+const itemCompleted = document.querySelectorAll('.item span.completed')//variable for completed items
 
 Array.from(deleteBtn).forEach((element)=>{
-    element.addEventListener('click', deleteItem)
+    element.addEventListener('click', deleteItem)//puts event listener on deletebutton
 })
 
 Array.from(item).forEach((element)=>{
-    element.addEventListener('click', markComplete)
+    element.addEventListener('click', markComplete)//add eventlistener to mark complete
 })
 
 Array.from(itemCompleted).forEach((element)=>{
-    element.addEventListener('click', markUnComplete)
+    element.addEventListener('click', markUnComplete)//allows you to add event listener to mark uncomplete
 })
 
 async function deleteItem(){
+    //this target specific item isn index.ejs. Looks at parent, then child and puts it in a variable.
     const itemText = this.parentNode.childNodes[1].innerText
     try{
+        //pulls response from server and sends back method, content type 
         const response = await fetch('deleteItem', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
@@ -26,10 +29,10 @@ async function deleteItem(){
           })
         const data = await response.json()
         console.log(data)
-        location.reload()
+        location.reload()//reloads webpage after data received.
 
     }catch(err){
-        console.log(err)
+        console.log(err)//catching and reporting errors.
     }
 }
 

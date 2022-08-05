@@ -19,11 +19,13 @@
 </head>
 <body>
     <h1>Todo List: </h1>
+    <!-- title -->
     <ul class="todoItems">
     <% for(let i=0; i < items.length; i++) {%>
         <li class="item">
             <% if(items[i].completed === true) {%>
                 <span class='completed'><%= items[i].thing %></span>
+                <!-- if completed, it will have a class that has linethrough -->
             <% }else{ %>
                 <span><%= items[i].thing %></span>
             <% } %>    
@@ -33,11 +35,14 @@
     </ul>
 
     <h2>Left to do: <%= left %></h2>
+    <!-- detailing what needs to be done -->
 
     <h2>Add A Todo:</h2>
 
     <form action="/addTodo" method="POST">
+        <!-- addTodo has to match what's in the server js file. -->
         <input type="text" placeholder="Thing To Do" name="todoItem">
+        <!-- tells server where to target. -->
         <input type="submit">
     </form>
     
