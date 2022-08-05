@@ -1,7 +1,7 @@
 const express = require('express')//express parses json syntax
 const app = express()//allows you to use express
 const MongoClient = require('mongodb').MongoClient
-const PORT = process.env.PORT || 2121//the computer port that we listen for
+const server = http.createServer(process.env.PORT || 2121) 
 require('dotenv').config()
 
 //naming database collection
